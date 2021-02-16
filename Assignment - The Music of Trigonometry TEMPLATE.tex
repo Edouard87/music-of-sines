@@ -1,0 +1,311 @@
+\documentclass[12pt,oneside]{article}
+%%%%%%%%PREAMBLE%%%%%%%%%%%%%%%%
+\usepackage{amsfonts}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{graphicx}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{cancel}
+\usepackage[english]{babel}
+\usepackage{blindtext}
+\usepackage{media9}
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{units}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{longtable}
+
+\setlength{\textheight}{9.5in}
+\setlength{\textwidth}{7in}
+\setlength{\topmargin}{-1in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\evensidemargin}{-0.5in}
+\setlength{\parskip}{0.15in}
+\setlength{\parindent}{0in}
+
+
+\usepackage[usenames,dvipsnames]{xcolor}  %%%this package is required for latex code in svg graphics
+
+\usepackage{titlesec}
+\titlespacing*{\chapter}{0pt}{-50pt}{20pt}
+\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+
+
+%Various math operator macros
+\DeclareMathOperator{\tr}{trace}
+\DeclareMathOperator{\edm}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\rk}{rank}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\len}{length}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\spa}{span}
+\DeclareMathOperator{\lcm}{lcm}
+
+%Division symbols
+\newcommand\dn{\!\nmid\!}
+\newcommand\dv{\!\mid\!}
+
+%Absolute values and norms
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+
+%Coloring the text
+\newcommand{\red}{\textcolor{red}}
+\newcommand{\green}{\textcolor{green}}
+\newcommand{\blue}{\textcolor{blue}}
+\newcommand{\yellow}{\textcolor{yellow}}
+\newcommand{\brown}{\textcolor{brown}}
+\newcommand{\pink}{\textcolor{pink}}
+\newcommand{\magenta}{\textcolor{magenta}}
+\newcommand{\purple}{\textcolor{purple}}
+\newcommand{\orange}{\textcolor{orange}}
+
+%Calligraphic symbols
+\newcommand{\car}{{\cal R}}
+\newcommand{\cm}{{\cal M}}
+\newcommand{\ca}{{\cal A}}
+\newcommand{\cl}{{\cal L}}
+\newcommand{\ci}{{\cal I}}
+\newcommand{\cj}{{\cal J}}
+\newcommand{\ck}{{\cal K}}
+\newcommand{\cn}{{\cal N}}
+\newcommand{\cq}{{\cal Q}}
+\newcommand{\ce}{{\cal E}}
+\newcommand{\cp}{{\cal P}}
+\newcommand{\cu}{{\cal U}}
+\newcommand{\cf}{{\cal F}}
+\newcommand{\cc}{{\cal C}}
+\newcommand{\ct}{{\cal T}}
+
+%Math blackboard bold symbols
+\newcommand{\mba}{\mathbb{A}}
+\newcommand{\mbr}{\mathbb{R}}
+\newcommand{\mbz}{\mathbb{Z}}
+\newcommand{\mbq}{\mathbb{Q}}
+\newcommand{\mbf}{\mathbb{F}}
+\newcommand{\mbn}{\mathbb{N}}
+\newcommand{\mbc}{\mathbb{C}}
+\newcommand{\mbp}{\mathbb{P}}
+\newcommand{\mbe}{\mathbb{E}}
+\newcommand{\zns}{\mathbb{Z}_n^\star}
+\newcommand{\zps}{\mathbb{Z}_p^\star}
+
+%Making matrices
+\newcommand{\bbm}{\begin{bmatrix}}
+\newcommand{\ebm}{\end{bmatrix}}
+\newcommand{\bpm}{\begin{pmatrix}}
+\newcommand{\epm}{\end{pmatrix}}
+
+%Polynomial ring shortcuts
+\newcommand{\kx}{K[X]}
+\newcommand{\fx}{F[X]}
+\newcommand{\rx}{R[X]}
+\newcommand{\ax}{A[X]}
+\newcommand{\bx}{B[X]}
+\newcommand{\krx}{K(X)}
+\newcommand{\frx}{F(X)}
+\newcommand{\lx}{L[X]}
+\newcommand{\qrx}{\mathbb{Q}(X)}
+\newcommand{\zx}{\mathbb{Z}[X]}
+\newcommand{\rex}{\mathbb{R}[X]}
+\newcommand{\cx}{\mathbb{C}[X]}
+\newcommand{\qx}{\mathbb{Q}[X]}
+\newcommand{\zpx}{\mathbb{Z}_p[X]}
+
+%Greek shortcuts
+\newcommand{\ag}{\alpha}
+\newcommand{\al}{\alpha}
+\newcommand{\vf}{\varphi}
+\newcommand{\ve}{\varepsilon}
+
+%Peripheral symbols
+\newcommand{\ar}{\rightarrow}
+\newcommand{\iiff}{\Longleftrightarrow}
+\newcommand{\ol}{\overline}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\gi}{\mbz[i]}
+
+%Makes dispalystyle
+\newcommand{\dss}{\displaystyle}
+
+%Sets up a unnumbered subsubsection 
+\newcommand{\sss}{\subsubsection*}
+
+%makes the mod notation
+\newcommand\md{\!\!\!\mod}
+
+%Puts the marks in the margins
+\newcommand{\rmp}{\reversemarginpar\marginpar}
+
+% \highlight[<colour>]{<stuff>}
+\newcommand{\highlight}[2][yellow]{\mathchoice%
+  {\colorbox{#1}{$\displaystyle#2$}}%
+  {\colorbox{#1}{$\textstyle#2$}}%
+  {\colorbox{#1}{$\scriptstyle#2$}}%
+  {\colorbox{#1}{$\scriptscriptstyle#2$}}}%
+
+\usepackage{lipsum}% http://ctan.org/pkg/lipsum
+\usepackage{eso-pic}% http://ctan.org/pkg/eso-pic
+\usepackage{graphicx}% http://ctan.org/pkg/graphicx
+
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+
+\DeclareMathSizes{12}{15}{14}{14}
+
+\newcommand{\uph}[1]{\underline{#1}}
+\newcommand{\NMarks}[1]{{\textcolor{magenta}{[#1 marks]}}}
+\newcommand{\Score}[1]{\hfill{\LARGE \textcolor{magenta}{Score: }}{\Huge \textcolor{magenta}{$\displaystyle \frac{}{#1}$\\}}}
+
+\usepackage[most]{tcolorbox}
+
+\begin{document}
+
+\noindent
+\magenta{\Large{\bf Enriched 11 IB Mathematics A\&A HL Y1 \hfill {2020-21}}\\
+\underline{\Large{\bf The Music of Trigonometry}}\\}
+
+\magenta{\large{\bf M. Hoteit}\\\\
+\large{\underline{Due Date:}\quad  Thursday, Feb 18 2021 10 PM}\\}
+\vspace{0.015in}\hrulefill\ 
+
+\large{First Group Member:  %%%TYPE Name of First Group Member\\ 
+}
+
+\large{Second Group Member:  %%%TYPE Name of Second Group Member\\ 
+}
+
+\large{Third Group Member:  %%%TYPE Name of Third Group Member\\ 
+}
+\\
+
+\normalsize
+
+%%%%%%REPLACE ALL THE RED TEXT BELOW WITH YOUR ANSWERS%%%%%%
+
+\textbf{Reference Declaration}
+
+Complete the Reference Declaration section below in order for your assignment to be graded.
+
+If you used any references beyond the course text and lectures (such as other texts, discussions with classmates or online resources), indicate this information in the space below.  If you did not use any aids, state this in the space provided. 
+
+Note: Your submitted work must be \textbf{your original work}. 
+
+
+
+\underline{Declared References:} \\
+
+
+% Type your references here.
+% You can use as many lines as required.
+
+
+\newpage
+
+
+\begin{tcolorbox}[breakable, enhanced, colframe=blue!25,
+colback=white!10,
+coltitle=blue!20!black,  
+title= {\bf Task 1: Basic Tuning Fork Frequencies.}] 
+For your first task, you are to measure the frequencies of the set of tuning forks provided in class. Using the virtual oscilloscope at \url{https://academo.org/demos/virtual-oscilloscope/}, you will record a clear sound wave for each of the tuning forks. Take a screen-shot of the image and approximate the wavelength from the graph. Using the formula $f=\tfrac{1}{\lambda}$, where $\lambda$ is the wavelength, approximate the frequency of each tuning fork (8 separate computations) \underline{and} measure the percent error in comparison with the frequency written on the respective tuning forks.
+\end{tcolorbox}
+
+\begin{enumerate}
+\item \underline{\bf C Tuning Fork - 512 Hz:}
+%%%%include screen-shots and calculations here using different colour.
+
+\item \underline{\bf B Tuning Fork - 480 Hz:}
+%%%%include screen-shots and calculations here using different colour.
+
+\item \underline{\bf A Tuning Fork - 426.6 Hz:}
+%%%%include screen-shots and calculations here using different colour.
+
+\item \underline{\bf G Tuning Fork - 384 Hz:}
+%%%%include screen-shots and calculations here using different colour.
+
+\item \underline{\bf F Tuning Fork - 341.3 Hz:}
+%%%%include screen-shots and calculations here using different colour.
+
+\item \underline{\bf E Tuning Fork - 320 Hz:}
+%%%%include screen-shots and calculations here using different colour.
+
+\item \underline{\bf D Tuning Fork - 288 Hz:}
+%%%%include screen-shots and calculations here using different colour.
+
+\item \underline{\bf C Tuning Fork - 256 Hz:}
+%%%%include screen-shots and calculations here using different colour.
+
+\end{enumerate}
+
+\newpage
+
+\begin{tcolorbox}[breakable, enhanced, colframe=blue!25,
+colback=white!10,
+coltitle=blue!20!black,  
+title= {\bf Task 2: Combining Sinusoidals.}] 
+For your second task, you will be playing two tuning forks at once. Ideally, these should be played at amplitudes (loudness) that are as similar as possible. Using the formula:
+$$\sin\left(2\pi f_1 t\right) + \sin\left(2\pi f_2 t\right) = 2\cos\left(2\pi\cdot \dss\frac{f_1-f_2}{2}\cdot t\right)\sin\left(2\pi\cdot \dss\frac{f_1+f_2}{2}\cdot t\right)$$
+where $f_1$ and $f_2$ are the frequencies, you will be computing the theoretical function formed by playing two tuning forks simultaneously and comparing this with your experimental results. To do so, you will need to take screen-shots of the resultant sound waves, making sure you capture the fluctuations in amplitude as well. Then, using a dynamic geometry software such as GeoGebra or Desmos, you will graph the theoretical function you obtained from the identity above and then layer over it the screen-shot you took to see how well they match. This will require you to make the layered image opaque (increase its transparency) and will require some horizontal and vertical scaling of the image to match the function. Once you have successfully layered these together, take a screen-shot of the two waves \underline{and} comment on how well matched your results are to the expected values, including discussing the possible sources of error in your computations. You will need to perform this task on three different combinations of tuning forks (ex. A \& B, B \& F, D \& G). Clearly indicate which grouping you are using in your submission.\\
+\end{tcolorbox}
+
+%%%%%Remove all percent signs below to activate enumeration and replace relevant text with your own.
+%\begin{enumerate}
+
+%\item \underline{\bf First combination (state clearly which notes and their frequencies):}
+%%%%include screen-shots and calculations here using different colour.
+
+%\item \underline{\bf Second combination (state clearly which notes and their frequencies):}
+%%%%include screen-shots and calculations here using different colour.
+
+%\item \underline{\bf Third combination (state clearly which notes and their frequencies):}
+%%%%include screen-shots and calculations here using different colour.
+
+%\end{enumerate}
+
+\newpage
+
+\begin{tcolorbox}[breakable, enhanced, colframe=blue!25,
+colback=white!10,
+coltitle=blue!20!black,  
+title= {\bf Task 3: Drop a Beat!}] 
+For this task, you will creating \underline{\bf three different beats} using the beat generator at Academo.org, which you can find at \url{https://academo.org/demos/wave-interference-beat-frequency/}. To do so, you will need to choose two frequencies that are close together, turn the sound on, and take a screen-shot of your set-up \underline{as well as} an audio recording of the beat created. You will then need to either include the audio directly into your assignment or include a link to a Google Drive recording to hear the beat. The screen-shot taken must clearly show the frequencies of the initial waves and the resulting beats (3-4 envelopes, as shown in class). 
+\end{tcolorbox}
+
+%%%%%Remove all percent signs below to activate enumeration and replace relevant text with your own.
+%\begin{enumerate}
+
+%\item \underline{\bf First beat:}
+%%%%include screen-shots and calculations here using different colour.
+
+%\item \underline{\bf Second beat:}
+%%%%include screen-shots and calculations here using different colour.
+
+%\item \underline{\bf Third beat:}
+%%%%include screen-shots and calculations here using different colour.
+
+%\end{enumerate}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

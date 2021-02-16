@@ -1,0 +1,55 @@
+\documentclass[12pt,oneside]{article}
+\usepackage{float}
+\input{preamble.tex}
+
+\begin{document}
+
+\noindent
+\magenta{\Large{\bf Enriched 11 IB Mathematics A\&A HL Y1 \hfill {2020-21}}\\
+\underline{\Large{\bf The Music of Trigonometry}}\\}
+
+\magenta{\large{\bf M. Hoteit}\\\\
+\large{\underline{Due Date:}\quad  Thursday, Feb 18 2021 10 PM}\\}
+\vspace{0.015in}\hrulefill\ \\
+$if(first_author)$
+\large{First Group Member: $first_author$}
+$endif$
+$if(second_author)$
+\par
+\large{Second Group Member: $second_author$}
+$endif$
+$if(third_author)$
+\par
+\large{Third Group Member: $third_author$}
+$endif$
+\\
+
+\normalsize
+
+%%%%%%REPLACE ALL THE RED TEXT BELOW WITH YOUR ANSWERS%%%%%%
+
+\textbf{Reference Declaration}
+
+Complete the Reference Declaration section below in order for your assignment to be graded.
+
+If you used any references beyond the course text and lectures (such as other texts, discussions with classmates or online resources), indicate this information in the space below.  If you did not use any aids, state this in the space provided. 
+
+Note: Your submitted work must be \textbf{your original work}. 
+
+\underline{Declared References:} \\
+
+$if(references)$
+\begin{enumerate}
+$for(references)$
+    \item $references$
+$endfor$
+\end{enumerate}
+$else$
+\red{\bf There are no references to declare for this assignment.}\par
+$endif$
+
+\newpage
+
+$body$
+
+\end{document}
