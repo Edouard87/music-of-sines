@@ -47,7 +47,7 @@ knitr::include_graphics("./images/c4.png")
 See Figure \ref{fig:c4} for image.
 
 **Frequency:** 256.41 Hz \par
-**Expected Frequency:** 
+**Expected Frequency:** 256
 **Percent Error: ** 0.2\% 
 
 \color{black}
