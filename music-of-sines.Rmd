@@ -5,13 +5,14 @@ first_author: "Edouard Des Parois Perrault"
 second_author: "Juliette Kwan"
 third_author: "Justin Ho"
 references:
-  - "We spoke to Arthur Huang and Tram-Anh's team for clarifications on our results"
+  - "We spoke to Arthur Huang and Tram-Anh Ngo's team for clarifications on our results"
   - "We spoke to Justin Huang's team for clarifications on our results"
 date: "16/02/2021"
 output: 
   pdf_document:
     keep_tex: true
     template: "template.tex"
+    number_sections: false
 ---
 
 ``` {r echo=FALSE}
@@ -47,7 +48,7 @@ knitr::include_graphics("./images/c4.png")
 See Figure \ref{fig:c4} for image.
 
 **Frequency:** 256.41 Hz \par
-**Expected Frequency:** 256
+**Expected Frequency:** 256 Hz \par
 **Percent Error: ** 0.2\% 
 
 \color{black}
@@ -234,6 +235,8 @@ See Figure \ref{fig:c5} for image.
 
 \parttwo
 
+**Note:** In the interest of keeping this report succinct, let the basic form of the function \(C(x)\) be \(2\cos\left(2\pi\cdot\frac{f_1 - f_2}{2}\cdot x\right)\sin\left(2\pi\cdot\frac{f_1 + f_2}{2}\cdot x\right)\), with \(f_1\) and \(f_2\) being the frequencies of the two different notes being summed up.
+
 ```{=latex}
 \begin{enumerate}
 ```
@@ -243,8 +246,21 @@ See Figure \ref{fig:c5} for image.
 \color{red}
 %%%%include screen-shots and calculations here using different colour.
 ```
-**First Note:** F4 (341 Hz) \par
+**First Note:** F4 (341.1 Hz) \par
 **Second Note:** B4 (480 Hz)
+
+``` {r combo-1, fig.cap="First Combination", echo = FALSE}
+knitr::include_graphics("./images/fandb.png")
+```
+
+**Calculations:**
+\begin{eqnarray}
+  A(x) & = & \sin (2\pi\cdot 341.1\cdot x) \\
+  B(x) & = & \sin (2\pi\cdot 480 \cdot x) \\
+  C(x) & = & A(x) + B(x) \\
+       & = & 2\cos\left(2\pi\cdot\frac{480 - 341.1}{2}\cdot x\right)\sin\left(2\pi\cdot\frac{480 + 341.1}{2}\cdot x\right) \\
+       & = & 2\cos\left(2\pi\cdot 69.45\cdot x\right)\sin\left(2\pi\cdot 410.55\cdot x\right)
+\end{eqnarray}
 
 ```{=latex}
 \color{black}
@@ -253,8 +269,22 @@ See Figure \ref{fig:c5} for image.
 \color{red}
 ```
 
-**First Note:** F4 (341 Hz) \par
+**First Note:** F4 (341.1 Hz) \par
 **Second Note:** G4 (384 Hz)
+
+``` {r combo-2, fig.cap="Second Beat", echo = FALSE}
+knitr::include_graphics("./images/fandg.png")
+```
+
+**Calculations:**
+
+\begin{eqnarray}
+  A(x) & = & \sin (2\pi\cdot 341.1 \cdot x) \\
+  B(x) & = & \sin (2\pi\cdot 384\cdot x) \\
+  C(x) & = & A(x) + B(x) \\
+       & = & 2\cos\left(2\pi\cdot\frac{384-341.1}{2}\cdot x\right)\sin\left(2\pi\cdot\frac{384-341.1}{2}\cdot x\right) \\ 
+       & = & 2\cos\left(2\pi\cdot 21.45\cdot x\right)\sin\left(2\pi\cdot 362.9\cdot x\right)
+\end{eqnarray}
 
 ```{=latex}
 \color{black}
@@ -266,10 +296,52 @@ See Figure \ref{fig:c5} for image.
 **First Note:** C5 (512 Hz) \par
 **Second Note:** G4 (384 Hz)
 
+``` {r combo-3, fig.cap="Third Beat", echo = FALSE}
+knitr::include_graphics("./images/candg.png")
+```
+
+**Calculations:**
+
+\begin{eqnarray}
+  A(x) & = & \sin (2\pi\cdot 512 \cdot x) \\
+  B(x) & = & \sin (2\pi\cdot 384\cdot x) \\
+  C(x) & = & A(x) + B(x) \\
+       & = & 2\cos\left(2\pi\frac{512-384}{2}\cdot x\right)\sin\left(2\pi\cdot\frac{512+384}{2}\cdot x\right) \\ 
+       & = & 2\cos\left(2\pi\cdot64\cdot x\right)\sin\left(2\pi\cdot 448\cdot x\right)
+\end{eqnarray}
+
 ```{=latex}
 \color{black}
 \end{enumerate}
+\color{red}
 ```
+
+**Comments:** As per the instructions, comments should be made for the results of this experiment, though we were unsure whether a separate set of comments should be produced for each computation. Given that the computations were rather repetitive, we have made the decision to only include one set of comments for all trials at the end of this section. \par We have identified several sources of error, which we define in the below list. We strongly believe that these sources of error are the reasons why the composite waves we obtained were not exactly identical to those produced by our graphing software. Indeed, in all cases, the waves were close, though they were far from identical (see Figures \ref{fig:combo-1}, \ref{fig:combo-2}, and \ref{fig:combo-3}).
+
+1. The imprecision of the tuning forks
+1. The imprecision of the computer's microphone
+1. The imprecision of the oscilloscope
+1. Constructive interference due to the surrounding environment
+
+Further elaboration on each of these sources of error can be found below.
+
+## The imprecision of the tuning forks {-}
+
+We suspect it does not come as much of a surprise that the tuning forks employed in this experiment were not very precise. Take the note F4, for instance. [A quick google search](https://pages.mtu.edu/~suits/notefreqs.html) reveals that the accepted frequency of F4 is 349.23 Hz. That said, the frequency inscribed on the F4 tuning fork was 341.1. This is a percent error of 2.33\% right off the bat. \par In addition, some of the tuning forks were strangely identical, which suggests that the the value was written on the each of the forks was produced without any tests having been conducted to support it. \par We would like to share a quick test that can be conducted in order to support this argument; take a tuning fork in a quiet environment and make it vibrate. Consult an oscilloscope and take note of the frequency. Then, use an electronic device capable of producing a pure sine wave (i.e. a phone) and play the same note into the oscilloscope in order to record its wave. You will notice that the frequencies are different. Even in a perfectly quiet room, the fork is unable to produce a pure sine wave. \par Finally, in hindsight, the fact that the forks were repeatedly banged against the wall probably did not aid their precision. By the end of the experiment, many of them no longer had perfect edges. Although we recognize our lack of expertise in the domain, we suspect that dents in the forks must have introduced some sort of imprecision. \par
+
+## The Imprecision of the Computer's Microphone {-}
+
+The mac we used was an A1708. Now, it is very difficult to obtain technical specifications about it's microphone, apart from the fact that it has one (thank you so much Apple), but [a quick Google search](https://www.macworld.com/article/2367142/understanding-the-limitations-of-a-macs-microphone.html) reveals that it is far from being adequate to recording anything above the quality of a FaceTime call. In other words, the Mac microphone is great for speaking with a friend, but for high-precision experiments, it is so subpar that Apple has decided not to even post its specifications. In light of this, we suspect that it may have been unable to faithfully record the waves we created.
+
+## The Imprecision of the Osilloscope {-}
+
+Although the oscilloscope app we used had undeniable potential as an educational tool, its quality was extremely questionable. For instance, when we were calculating the wavelength, we counted the divisions and approximated. Because each tick on the graph was 0.2 ms, the precision of the oscilloscope itself was about \(\pm 0.1\)ms, and this does not include the imprecision of the microphone, which may have been much lower. The wavelength of middle C (C4) is about 3.9 milliseconds (in theory), so the percent of the oscilloscope alone is about 3%. Moreover, changing the parameters of the oscilloscope seemed to produce illogical results (though this may also have been due to the surrounding environment), which suggests that there was perhaps a bug in the underlying javascript code of the application.
+
+## The Constructive interference due to the Surrounding Environment {-}
+
+The room we conducted our tests in was far from silent despite it being a library; we conducted our tests amid a symphony of chatter, of banging tuning forks, and of shuffling students This undoubtedly produced some interferance, which changed our results. We suspect that this was the factor that contributed the most to the descrepancy between the theoretical wave and the actual wave we obtained. A simple experiment reveals this imprecision; measure the sine wave of the tuning fork in a quiet room, and it takes two seconds and only one try to get an acceptable wave (the precision of the forks themselves, however, is another story). Do the same in a noisy room, and it can take several tries to obtain the same results. Ambient noise has a significant part to play when it comes to precision.
+
+\color{black}
 
 \partthree
 
